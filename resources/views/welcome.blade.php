@@ -85,7 +85,7 @@
 
             <div class="content">
                 <div id="app" class="title m-b-md">
-                    @{{ message }}
+                    Pagina 
                 </div>
 
                 <div class="links">

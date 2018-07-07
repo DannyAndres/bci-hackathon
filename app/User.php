@@ -26,4 +26,24 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    /**
+    * Returns the Company acording to this user
+    *
+    * @return \App\Teacher
+    */
+    public function company()
+    {
+        return $this->hasOne('App\Company');
+    }
+
+    /**
+    * Returns the Worker acording to this user
+    *
+    * @return \App\Teacher
+    */
+    public function worker()
+    {
+        return $this->hasOne('App\Worker');
+    }
 }
