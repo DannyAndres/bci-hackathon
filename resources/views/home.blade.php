@@ -20,6 +20,14 @@
                         <a href="{{ route('empresa') }}" class="btn btn-primary">Empresa independiente</a>
                     </div>
                 </div>
+            @else
+                <div class="card">
+                    <div class="card-header">Dashboard</div>
+
+                    <div class="card-body">
+                        HOME
+                    </div>
+                </div>    
             @endif
         </div>
     </div>

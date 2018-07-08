@@ -23,6 +23,6 @@ Route::get('/normal', 'HomeController@normal')->name('normal');
 Route::get('/empresa', 'HomeController@empresa')->name('empresa');
 Route::get('/trabajador', 'HomeController@trabajador')->name('trabajador');
 
-Route::post('/normal-post', 'HomeController@normal-post')->name('normal-post');
-Route::post('/empresa-post', 'HomeController@empresa-post')->name('empresa-post');
-Route::post('/trabajador-post', 'HomeController@trabajador-post')->name('trabajador-post');
+Route::post('/normal-post', 'HomeController@normal_post')->name('normal-post');
+Route::post('/empresa-post', 'HomeController@empresa_post')->name('empresa-post');
+Route::post('/trabajador-post', 'HomeController@trabajador_post')->name('trabajador-post');

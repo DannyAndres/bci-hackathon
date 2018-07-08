@@ -14,6 +14,12 @@ class CompanyForm extends Model
   protected $fillable = [
       'name',
       'lastname',
+      'category',
+      'company_id',
+      'logo',
+      'product_1',
+      'product_2',
+      'product_3',
       'email',
       'rut',
       'web',

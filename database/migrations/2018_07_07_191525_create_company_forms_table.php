@@ -16,6 +16,11 @@ class CreateCompanyFormsTable extends Migration
         Schema::create('company_forms', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
+            $table->string('logo');
+            $table->string('product_1');
+            $table->string('product_2');
+            $table->string('product_3');
+            $table->string('category');
             $table->integer('company_id');
             $table->string('name');
             $table->string('lastname');

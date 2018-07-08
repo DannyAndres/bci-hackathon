@@ -19,7 +19,6 @@ class CreateWorkersTable extends Migration
             $table->string('slug');
             $table->integer('goal');
             $table->string('rut');
-            $table->boolean('verified')->default(false);
         });
     }
 

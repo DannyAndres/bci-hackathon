@@ -19,6 +19,7 @@ class CreateCompaniesTable extends Migration
             $table->integer('user_id');
             $table->string('companyName');
             $table->string('companySlug');
+            $table->boolean('verified')->default(false);
         });
     }
 

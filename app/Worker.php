@@ -12,7 +12,7 @@ class Worker extends Model
    * @var array
    */
   protected $fillable = [
-      'slug','goal','rut','verified'
+      'slug','goal','rut'
   ];
 
 	/**
