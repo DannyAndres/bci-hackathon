@@ -20,6 +20,7 @@ class CreateCompaniesTable extends Migration
             $table->string('companyName');
             $table->string('companySlug');
             $table->boolean('verified')->default(false);
+            $table->boolean('rejected')->default(false);
         });
     }
 

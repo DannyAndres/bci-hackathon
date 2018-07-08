@@ -26,3 +26,10 @@ Route::get('/trabajador', 'HomeController@trabajador')->name('trabajador');
 Route::post('/normal-post', 'HomeController@normal_post')->name('normal-post');
 Route::post('/empresa-post', 'HomeController@empresa_post')->name('empresa-post');
 Route::post('/trabajador-post', 'HomeController@trabajador_post')->name('trabajador-post');
+
+Route::get('/empresa/{slug}', 'HomeController@perfilEmpresa');
+
+Route::get('/administrador','HomeController@admin')->name('administrador');
+
+Route::post('/trabajador-aceptar', 'HomeController@trabajador_aceptar')->name('trabajador-aceptar');
+Route::post('/trabajador-rechazar', 'HomeController@trabajador_rechazar')->name('trabajador-rechazar');

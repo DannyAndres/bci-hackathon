@@ -12,7 +12,7 @@ class Worker extends Model
    * @var array
    */
   protected $fillable = [
-      'slug','goal','rut'
+      'slug','goal','rut','user_id','avatar'
   ];
 
 	/**
@@ -24,4 +24,9 @@ class Worker extends Model
 	{
 		return $this->belongsTo('App\User');
 	}
+
+  public function solicitud()
+  {
+      return $this->hasMany('App\Solicitud');
+  }
 }

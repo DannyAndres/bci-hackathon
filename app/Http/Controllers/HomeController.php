@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Auth;
 use App\Company;
 use App\CompanyForm;
+use App\Worker;
+use App\Solicitud;
 
 class HomeController extends Controller
 {
@@ -133,6 +135,75 @@ class HomeController extends Controller
      */
     public function trabajador_post(Request $request)
     {
-        return view('auth.userType.trabajador');
+
+        $user = Auth::User();
+
+        $this->validate($request, [
+          'rut' => 'required|string|max:255'
+        ]);
+
+        $worker = Worker::create([
+          'user_id' => $user->id,
+          'avatar' => '',
+          'slug' => str_slug($user->name),
+          'goal' => 5,
+          'rut' => $request->rut,
+        ]);
+
+        if ($request->hasFile('avatar')) {
+            $worker->update([
+              'avatar' => $request->avatar->store('public/worker')
+            ]);
+        }
+
+        $user->role = 3;
+        $user->save();
+
+        return redirect('/home');
+    }
+
+    public function perfilEmpresa($slug)
+    {
+      $company = Company::where('companySlug',$slug)->first();
+      return view('profile.empresa',['company' => $company]);
+    }
+
+    public function trabajador_aceptar(Request $request)
+    {
+      $this->validate($request, [
+        'company' => 'required|string|max:255'
+      ]);
+      $company = Company::where('companySlug',$request->company)->first();
+      $company->verified = 1;
+      $company->save();
+      $solicitud = Solicitud::create([
+          'worker_id' => Auth::user()->id,
+          'company_id' => $company->id,
+          'facebookPost' => '',
+          'acepted' => 1,
+      ]);
+      return redirect('/home');
+    }
+
+    public function trabajador_rechazar(Request $request)
+    {
+      $this->validate($request, [
+        'company' => 'required|string|max:255'
+      ]);
+      $company = Company::where('companySlug',$request->company)->first();
+      $company->rejected = 1;
+      $company->save();
+      $solicitud = Solicitud::create([
+          'worker_id' => Auth::user()->id,
+          'company_id' => $company->id,
+          'facebookPost' => '',
+          'acepted' => 0,
+      ]);
+      return redirect('/home');
+    }
+
+    public function admin()
+    {
+      return view('admin.admin');
     }
 }
